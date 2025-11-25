@@ -20,19 +20,20 @@ export default function ButtonOrLink({
   className,
   href,
   ariaLabel,
-    onClick,
+  onClick,
   isActive,
   ...props
 }: ButtonOrLinkProps) {
   const baseStyles =
-        'flex items-center justify-center rounded-full size-[46px] transition duration-300 bg-black/5 hover:bg-black-100/5 dark:hover:bg-black-200';
+    'flex items-center justify-center rounded-full size-[46px] transition duration-300 bg-black/5 hover:bg-black-100/5 dark:hover:bg-black-200';
 
-      const variantStyles = {
-        primary: 'bg-black/5 hover:bg-black/10 dark:bg-blue/35 dark:hover:bg-blue/20',
-        secondary: 'bg-brand hover:bg-brand/10',
-        ghost: 'bg-transparent hover:bg-black/15 dark:hover:bg-white/15',
-      };
-     const activeStyles = isActive ? 'bg-white text-black dark:text-black' : '';
+  const variantStyles = {
+    primary:
+      'bg-black/5 hover:bg-black/10 dark:bg-blue/35 dark:hover:bg-blue/20 active:bg-blue/25 active:dark:bg-blue/30',
+    secondary: 'bg-blue hover:bg-blue/10',
+    ghost: 'bg-transparent hover:bg-black/15 dark:hover:bg-white/15',
+  };
+  const activeStyles = isActive ? 'bg-white text-black dark:text-black' : '';
   const classes = cn(baseStyles, variantStyles[props.variant || 'primary'], className);
 
   // 👉 Render Link if href exists
@@ -46,7 +47,7 @@ export default function ButtonOrLink({
 
   // 👉 Otherwise render Button
   return (
-    <button type="button" aria-label={ariaLabel} className={classes} {...props}>
+    <button type="button" onClick={onClick} aria-label={ariaLabel} className={classes} {...props}>
       {children}
     </button>
   );

@@ -11,10 +11,20 @@ import IconSun from './sun.svg';
 import IconShop from './shopping-cart.svg';
 import IconMarker from './marker-pin.svg';
 import IconSearch from './search-md.svg';
-
-
+import IconEraser from './eraser.svg';
+import IconMoon from './moon.svg';
+import IconRobust from './Icon.svg';
+import IconMultilocation from './Icon-1.svg';
+import IconAvailable from './Icon-available.svg';
+import IconRobustRate from './Icon-2.svg';
+import IconLocation from './Icon-3.svg';
+import IconManual from './Icon-4.svg';
+import IconEllipse from './ellipse-11.svg';
+import IconEllipse_12 from './ellipse-12.svg';
 
 export {
+  IconMoon,
+  IconEraser,
   IconMarker,
   IconShop,
   IconBell,
@@ -28,4 +38,12 @@ export {
   IconSwitch,
   IconSun,
   IconSearch,
+  IconRobust,
+  IconMultilocation,
+  IconAvailable,
+  IconRobustRate,
+  IconLocation,
+  IconManual,
+  IconEllipse,
+  IconEllipse_12,
 };
