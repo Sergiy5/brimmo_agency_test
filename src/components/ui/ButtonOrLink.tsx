@@ -29,7 +29,7 @@ export default function ButtonOrLink({
 
   const variantStyles = {
     primary:
-      'bg-black/5 hover:bg-black/10 dark:bg-blue/35 dark:hover:bg-blue/20 active:bg-blue/25 active:dark:bg-blue/30',
+      'bg-black/5 hover:bg-black/10 dark:bg-black/35 dark:hover:bg-blue/20 active:bg-blue/25 active:dark:bg-blue/30',
     secondary: 'bg-blue hover:bg-blue/10',
     ghost: 'bg-transparent hover:bg-black/15 dark:hover:bg-white/15 dark:bg-white/5',
   };

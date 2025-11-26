@@ -1,11 +1,7 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
 import UserMenu from '@/layout/header/headerComponents/UserMenu';
 
-import { ThemeToggleButton } from '@/components/ui/ThemeToggleButton';
 import { InputSearch } from '@/components/ui/InputSearch';
 import { Logo } from '@/components/ui/Logo';
 
