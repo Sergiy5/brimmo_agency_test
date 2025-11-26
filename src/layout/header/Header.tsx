@@ -7,40 +7,28 @@ import UserMenu from '@/layout/header/headerComponents/UserMenu';
 
 import { ThemeToggleButton } from '@/components/ui/ThemeToggleButton';
 import { InputSearch } from '@/components/ui/InputSearch';
+import { Logo } from '@/components/ui/Logo';
 
 export const Header: React.FC = () => {
-  // const [isApplicationMenuOpen, setApplicationMenuOpen] = useState(false);
-
-  // const toggleApplicationMenu = () => {
-  //   setApplicationMenuOpen(!isApplicationMenuOpen);
-  // };
-  // const inputRef = useRef<HTMLInputElement>(null);
-
-  // useEffect(() => {
-  //   const handleKeyDown = (event: KeyboardEvent) => {
-  //     if ((event.metaKey || event.ctrlKey) && event.key === 'k') {
-  //       event.preventDefault();
-  //       inputRef.current?.focus();
-  //     }
-  //   };
-
-  //   document.addEventListener('keydown', handleKeyDown);
-
-  //   return () => {
-  //     document.removeEventListener('keydown', handleKeyDown);
-  //   };
-  // }, []);
-
   return (
     <header className="flex w-full">
-      <div className="flex w-full items-center justify-between lg:flex-row py-3.5 pr-4">
-        
-          <div className="hidden lg:block">
+      <div className="flex w-full flex-col items-start justify-between gap-3 py-3.5 pr-4 pl-4 sm:flex-row sm:items-center md:gap-0 md:pl-0 lg:flex-row">
+        <div className="flex w-full justify-between">
+          {/* <!-- Logo mobile --> */}
+          <div className="md:hidden">
+            <Logo />
+          </div>
+          {/* <!-- Search --> */}
+          <div className="mr-auto ml-2 hidden sm:block">
             <InputSearch />
           </div>
-      
+
           {/* <!-- User Area --> */}
           <UserMenu />
+        </div>
+        <div className="sm:hidden">
+          <InputSearch />
+        </div>
       </div>
     </header>
   );

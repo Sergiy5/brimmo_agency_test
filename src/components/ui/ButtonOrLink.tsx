@@ -31,15 +31,15 @@ export default function ButtonOrLink({
     primary:
       'bg-black/5 hover:bg-black/10 dark:bg-blue/35 dark:hover:bg-blue/20 active:bg-blue/25 active:dark:bg-blue/30',
     secondary: 'bg-blue hover:bg-blue/10',
-    ghost: 'bg-transparent hover:bg-black/15 dark:hover:bg-white/15',
+    ghost: 'bg-transparent hover:bg-black/15 dark:hover:bg-white/15 dark:bg-white/5',
   };
-  const activeStyles = isActive ? 'bg-white text-black dark:text-black' : '';
+  const activeStyles = isActive ? 'bg-white text-black dark:text-black dark:bg-blue/15' : '';
   const classes = cn(baseStyles, variantStyles[props.variant || 'primary'], className);
 
   // 👉 Render Link if href exists
   if (href) {
     return (
-      <Link href={href} className={classes} {...props}>
+      <Link href={href} className={cn(classes, activeStyles)} {...props}>
         {children}
       </Link>
     );
@@ -47,7 +47,13 @@ export default function ButtonOrLink({
 
   // 👉 Otherwise render Button
   return (
-    <button type="button" onClick={onClick} aria-label={ariaLabel} className={classes} {...props}>
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label={ariaLabel}
+      className={cn(classes, activeStyles)}
+      {...props}
+    >
       {children}
     </button>
   );

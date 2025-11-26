@@ -27,7 +27,7 @@ export const generateMonthlySinusoid = (options = {} as SinusoidOptions) => {
   }
 
   return data;
-}
+};
 
 // interface SinusoidOptions {
 //   amplitude: number;
@@ -38,7 +38,7 @@ export const generateMonthlySinusoid = (options = {} as SinusoidOptions) => {
 //   year?: number;
 // }
 
-export const generateSimpleSinusoid= (options = {} as SinusoidOptions )=> {
+export const generateSimpleSinusoid = (options = {} as SinusoidOptions) => {
   const { amplitude = 30, baseline = 50, phase = 0, frequency = 1 } = options;
 
   const data = [];
@@ -50,4 +50,4 @@ export const generateSimpleSinusoid= (options = {} as SinusoidOptions )=> {
   }
 
   return data;
-}
+};

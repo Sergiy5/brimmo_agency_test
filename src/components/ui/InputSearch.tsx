@@ -3,23 +3,21 @@ import { IconSearch } from '@/assets/icons';
 import { cn } from '@/utils/cn';
 import IconEraser from '@/assets/icons/eraser.svg';
 
-
 export const InputSearch = () => {
   const [isFocused, setIsFocused] = useState(false);
   const [searchValue, setSearchValue] = useState('');
-  
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    const query = searchValue.trim();
-     if (query) {
-       //  alert(`Searching for: ${searchValue}`);
-     }
-   };
 
-   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-     
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const query = searchValue.trim();
+    if (query) {
+      //  alert(`Searching for: ${searchValue}`);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
-   };
+  };
 
   return (
     <form onSubmit={handleSubmit} className="relative">
@@ -37,9 +35,9 @@ export const InputSearch = () => {
           onBlur={() => setIsFocused(false)}
           onChange={handleChange}
           className={cn(
-            'h-full w-full rounded-full bg-white pl-5',
+            'h-full w-full rounded-full bg-white pl-5 dark:bg-white/5',
             'text-base transition-all duration-400 outline-none',
-            'placeholder:text-gray-400 placeholder:transition-opacity placeholder:delay-200 placeholder:duration-200',
+            'placeholder:text-gray-400 placeholder:transition-opacity placeholder:delay-200 placeholder:duration-200 dark:text-white/70 dark:caret-white/75 dark:placeholder:text-white/65',
             isFocused
               ? 'placeholder:opacity-100'
               : 'overflow-hidden placeholder:opacity-0 hover:placeholder:opacity-100',
@@ -52,18 +50,22 @@ export const InputSearch = () => {
             onClick={() => setSearchValue('')}
             className="group absolute top-1/2 right-12 z-10 -translate-y-1/2 transform"
           >
-            <IconEraser className={'size-5 text-black transition group-hover:text-red-500'} />
+            <IconEraser
+              className={
+                'size-5 text-black transition group-hover:text-red-500 dark:text-white/35 dark:group-hover:text-red-500'
+              }
+            />
           </button>
         )}
         <button
           type="submit"
           onClick={handleSubmit}
-          className="group absolute top-0 right-0 flex size-[46px] items-center justify-center rounded-full bg-white"
+          className="group absolute top-0 right-0 flex size-[46px] items-center justify-center rounded-full bg-white dark:bg-white/5"
         >
           <span className="flex size-11 items-center justify-center rounded-full p-0.5 transition-all group-hover:bg-black/5">
             <IconSearch
               className={cn(
-                'h-5 w-5 text-black transition-transform duration-300',
+                'h-5 w-5 text-black transition-transform duration-300 dark:text-white/35',
                 isFocused && 'rotate-90',
               )}
             />

@@ -28,8 +28,6 @@ interface ISinusoidOptions {
 export const generateMonthlySinusoid = (options: ISinusoidOptions) => {
   const { amplitude = 30, baseline = 50, phase = 0, frequency = 2, pointsPerMonth = 10 } = options;
 
-  
-
   const totalPoints = 12 * pointsPerMonth;
   const data = [];
 
@@ -44,7 +42,7 @@ export const generateMonthlySinusoid = (options: ISinusoidOptions) => {
 };
 
 // Create chart data
-const salesData = generateMonthlySinusoid({
+const inventoryData = generateMonthlySinusoid({
   amplitude: 30,
   baseline: 75,
   frequency: 2,
@@ -52,7 +50,7 @@ const salesData = generateMonthlySinusoid({
   phase: 0,
 });
 
-const revenueData = generateMonthlySinusoid({
+const demandData = generateMonthlySinusoid({
   amplitude: 28,
   baseline: 75,
   frequency: 2,
@@ -63,13 +61,13 @@ const revenueData = generateMonthlySinusoid({
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 // Combine data
-const chartData = salesData.map((sales, index) => {
-  const monthIndex = Math.floor((index / salesData.length) * 12);
+const chartData = inventoryData.map((inventory, index) => {
+  const monthIndex = Math.floor((index / inventoryData.length) * 12);
   return {
     index,
     month: monthIndex < 12 ? months[monthIndex] : '',
-    sales,
-    revenue: revenueData[index],
+    inventory,
+    revenue: demandData[index],
   };
 });
 
@@ -78,9 +76,9 @@ export const Chart = () => {
 
   const isDark = theme === 'dark';
   return (
-    <div className="flex h-full w-full flex-col gap-6 rounded-2xl bg-white p-6 dark:bg-white/10">
-      <div className="flex w-full items-start justify-between">
-        <div className="flex w-[356px] flex-col items-start justify-start gap-1">
+    <div className="flex h-[400px] w-full flex-col gap-6 rounded-2xl bg-white py-4 pr-3.5 lg:h-[500px] dark:bg-white/8">
+      <div className="flex w-full flex-col items-start justify-between gap-2 pl-4 lg:flex-row lg:items-center">
+        <div className="flex flex-col items-start justify-start gap-1">
           <p className="text-left text-lg font-semibold text-black dark:text-white">
             Inventory Coverage (90 days)
           </p>
@@ -94,7 +92,7 @@ export const Chart = () => {
               <p className="text-left text-xs">Projected Inventory</p>
             </div>
             <div className="flex items-center justify-start gap-2">
-              <div className="h-1 w-2.5 overflow-hidden bg-blue/50" />
+              <div className="bg-blue/50 h-1 w-2.5 overflow-hidden" />
               <p className="text-left text-xs">Demand</p>
             </div>
             <div className="flex items-center justify-center gap-1">
@@ -117,7 +115,7 @@ export const Chart = () => {
         </div>
       </div>
 
-      <ResponsiveContainer width="100%" height={400}>
+      <ResponsiveContainer width="100%" height="100%">
         <AreaChart data={chartData}>
           <defs>
             {/* Gradient for Sales (Area chart) */}
@@ -145,12 +143,12 @@ export const Chart = () => {
             tickLine={false}
             tick={{ fill: `${isDark ? '#ffffff' : 'rgba(7, 20, 41, 0.5)'}`, fontSize: 12 }}
           />
-          <ReferenceLine y={35} stroke="#7FCB87" strokeDasharray="3 3" />
+          <ReferenceLine y={40} stroke="#7FCB87" strokeDasharray="3 3" />
           <Tooltip content={<ChartTooltip />} />
-          {/* Sales with gradient (Area) */}
+          {/* With gradient (Area) */}
           <Area
             type="monotone"
-            dataKey="sales"
+            dataKey="inventory"
             stroke="#0E64EE"
             strokeWidth={2}
             fill="url(#salesGradient)"

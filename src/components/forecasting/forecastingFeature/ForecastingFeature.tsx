@@ -27,9 +27,9 @@ export const ForecastingFeature: React.FC = () => {
   ];
 
   return (
-    <ul className="flex w-full flex-1 items-center justify-between gap-2">
+    <ul className="flex h-full w-full flex-1 flex-col items-center justify-between gap-2 lg:flex-row">
       {arrayFeatures.map((feature) => (
-        <li key={feature.title} className="flex-1">
+        <li key={feature.title} className="w-full">
           <ForecastingFeatureItem {...feature} />
         </li>
       ))}

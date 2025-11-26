@@ -2,7 +2,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@theme inline {
+@theme {
   /* --font-*: initial; */
   --font-family: var(--font-openSans), sans-serif;
   --font-secondary: var(--font-fixelDisplay), sans-serif;
@@ -14,17 +14,15 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1440px;
   --breakpoint-4xl: 1600px;
 
   --color-white: #ffffff;
   --color-black: #071429;
-
-  --color-bg-main: #E7EDF8;
-  --color-bg-sidebar: #071429;
-  --color-blue: #0E64EE;
-  /* --color-blue-light: #D9F7FF; //ellips-12
-  --color-blue-pastel: ##CEDCFF; //ellips-11 */
-
+  --color-bg-main: #e7edf8;
+  --color-blue: #0e64ee;
+  --color-ice-blue: #e8ecf4;
+  --color-gray: #cdd0d4;
 }
 
 @layer base {
@@ -40,9 +38,9 @@
     cursor: pointer;
   }
 
-  
-  html, body {
-    @apply h-full font-[openSans] relative z-1 bg-bg-main;
+  html,
+  body {
+    @apply bg-bg-main relative z-1 min-h-screen font-[openSans] dark:bg-[#0A0F1A];
   }
 }
 
@@ -73,7 +71,6 @@
   background-color: #344054;
 }
 
-
 @layer components {
   h1,
   h2,
@@ -81,16 +78,14 @@
   h4,
   h5,
   h6 {
-    @apply font-[fixelDisplay] font-semibold;
+    @apply font-[fixelDisplay] font-semibold text-black dark:text-white/95;
   }
-  
+
   .text-description {
-    @apply text-black/50 dark:text-white/80 text-sm;
+    @apply text-sm text-black/50 dark:text-white/80;
   }
-  /* .no-scrollbar {
-    @apply no-scrollbar;
+
+  .card-bg {
+    @apply bg-white/50 dark:bg-white/5;
   }
-  .custom-scrollbar {
-    @apply custom-scrollbar;
-  } */
 }
