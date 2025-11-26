@@ -9,7 +9,7 @@ export const ThemeToggleButton: React.FC = () => {
  const isDark = theme === 'dark';
   return (
     <ButtonOrLink onClick={toggleTheme} variant={isDark ? 'ghost' : 'primary'}>
-      {/* className="" */}
+     
       <IconMoon className="hidden size-5 dark:block dark:text-white/80" />
       <IconSun className="size-5 dark:hidden" />
     </ButtonOrLink>
