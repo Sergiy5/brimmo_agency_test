@@ -11,10 +11,10 @@ import {
   Area,
   AreaChart,
   ReferenceLine,
-  Legend,
 } from 'recharts';
-import { ChartTooltip } from './chartComponents/ChartTooltip';
+import { ChartTooltip } from './CustomTooltip';
 import { useTheme } from '@/context/ThemeContext';
+import { CustomCursor } from './CustomCursor';
 
 interface ISinusoidOptions {
   amplitude: number;
@@ -41,42 +41,69 @@ export const generateMonthlySinusoid = (options: ISinusoidOptions) => {
   return data;
 };
 
-// Create chart data
+// Create chart data with 4 points per month (weekly)
 const inventoryData = generateMonthlySinusoid({
-  amplitude: 30,
-  baseline: 75,
+  amplitude: 25,
+  baseline: 55,
   frequency: 2,
-  pointsPerMonth: 10,
+  pointsPerMonth: 4,
   phase: 0,
 });
 
 const demandData = generateMonthlySinusoid({
-  amplitude: 28,
-  baseline: 75,
+  amplitude: 22,
+  baseline: 55,
   frequency: 2,
   phase: Math.PI / 4,
-  pointsPerMonth: 10,
+  pointsPerMonth: 4,
 });
 
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
+// Generate dates for each week (approximately 7 days apart)
+const generateWeeklyDates = (startYear: number = 2024) => {
+  const dates = [];
+  const startDate = new Date(startYear, 0, 1); // January 1st
+
+  for (let i = 0; i < 48; i++) {
+    // 12 months × 4 weeks
+    const date = new Date(startDate);
+    date.setDate(startDate.getDate() + i * 7); // Add 7 days for each week
+    dates.push(date);
+  }
+
+  return dates;
+};
+
+const weeklyDates = generateWeeklyDates(2024);
+
 // Combine data
 const chartData = inventoryData.map((inventory, index) => {
-  const monthIndex = Math.floor((index / inventoryData.length) * 12);
+  const date = weeklyDates[index];
+  const monthIndex = date.getMonth();
+  const day = date.getDate();
+
   return {
     index,
-    month: monthIndex < 12 ? months[monthIndex] : '',
+    month: months[monthIndex],
+    date: date.toISOString().split('T')[0], // YYYY-MM-DD format
+    label: `${months[monthIndex]} ${day}`,
+    fullDate: date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
     inventory,
+    inventoryFill: inventory - 5,
     revenue: demandData[index],
   };
 });
+
+// const data = [{ index: -1, inventory: null, revenue: null }, ...chartData];
 
 export const Chart = () => {
   const { theme } = useTheme();
 
   const isDark = theme === 'dark';
+
   return (
-    <div className="flex h-[400px] w-full flex-col gap-6 rounded-2xl bg-white py-4 pr-3.5 lg:h-[500px] dark:bg-white/8">
+    <div className="flex 2xl:h-full h-[400px] w-full flex-col gap-6 rounded-2xl bg-white py-4 pr-3.5 lg:min-h-[500px] dark:bg-white/8">
       <div className="flex w-full flex-col items-start justify-between gap-2 pl-4 lg:flex-row lg:items-center">
         <div className="flex flex-col items-start justify-start gap-1">
           <p className="text-left text-lg font-semibold text-black dark:text-white">
@@ -117,23 +144,20 @@ export const Chart = () => {
 
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart data={chartData}>
-          <defs>
-            {/* Gradient for Sales (Area chart) */}
-            <linearGradient id="salesGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#0E64EE" stopOpacity={0.55} />
-              <stop offset="95%" stopColor="#0E64EE" stopOpacity={0} />
-            </linearGradient>
-          </defs>
-
           <CartesianGrid strokeDasharray="0" stroke="#f0f0f0" vertical={false} />
 
           <XAxis
-            dataKey="month"
+            dataKey="index"
             axisLine={false}
             tickLine={false}
             tick={{ fill: `${isDark ? '#ffffff' : 'rgba(7, 20, 41, 0.5)'}`, fontSize: 12 }}
-            interval="preserveStartEnd"
-            ticks={months}
+            height={30}
+            ticks={[0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44]}
+            tickFormatter={(value) => {
+              const monthIndex = Math.floor(value / 4);
+              return months[monthIndex] || '';
+            }}
+            padding={{ left: 20, right: 0 }}
           />
 
           <YAxis
@@ -143,18 +167,36 @@ export const Chart = () => {
             tickLine={false}
             tick={{ fill: `${isDark ? '#ffffff' : 'rgba(7, 20, 41, 0.5)'}`, fontSize: 12 }}
           />
+
           <ReferenceLine y={40} stroke="#7FCB87" strokeDasharray="3 3" />
-          <Tooltip content={<ChartTooltip />} />
-          {/* With gradient (Area) */}
+
+          <Tooltip cursor={<CustomCursor isDrak={isDark} />} content={<ChartTooltip />} />
           <Area
             type="monotone"
             dataKey="inventory"
             stroke="#0E64EE"
             strokeWidth={2}
-            fill="url(#salesGradient)"
+            fill="none"
             dot={false}
             activeDot={{ r: 6, stroke: 'none', strokeWidth: 0 }}
+            // connectNulls={false}
           />
+          {/* With gradient (Area) */}
+          <Area
+            type="monotone"
+            dataKey="inventoryFill"
+            strokeWidth={0}
+            fill="url(#salesGradient)"
+            dot={false}
+            activeDot={false}
+          />
+          <defs>
+            {/* Gradient for Sales (Area chart) */}
+            <linearGradient id="salesGradient" x1="0" y1="0" x2="0.5" y2="1">
+              <stop offset="5%" stopColor="#0E64EE" stopOpacity={0.15} />
+              <stop offset="95%" stopColor="#0E64EE" stopOpacity={0} />
+            </linearGradient>
+          </defs>
 
           {/* Revenue without gradient (Line) */}
           <Line

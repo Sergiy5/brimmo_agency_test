@@ -35,12 +35,12 @@ export const InputSearch = () => {
           onBlur={() => setIsFocused(false)}
           onChange={handleChange}
           className={cn(
-            'h-full w-full rounded-full bg-white pl-5 dark:bg-white/5',
+            'h-full w-full rounded-full pl-5 dark:bg-white/5',
             'text-base transition-all duration-400 outline-none',
             'placeholder:text-gray-400 placeholder:transition-opacity placeholder:delay-200 placeholder:duration-200 dark:text-white/70 dark:caret-white/75 dark:placeholder:text-white/65',
             isFocused
-              ? 'placeholder:opacity-100'
-              : 'overflow-hidden placeholder:opacity-0 hover:placeholder:opacity-100',
+              ? 'bg-white placeholder:opacity-100'
+              : 'overflow-hidden bg-black/5 placeholder:opacity-0 hover:placeholder:opacity-100',
           )}
         />
         {!!searchValue && isFocused && (
@@ -60,9 +60,9 @@ export const InputSearch = () => {
         <button
           type="submit"
           onClick={handleSubmit}
-          className="group absolute top-0 right-0 flex size-[46px] items-center justify-center rounded-full bg-white dark:bg-white/5"
+          className="group absolute top-0 right-0 flex size-[46px] items-center justify-center rounded-full bg-black/4 transition-all hover:bg-black/10 dark:bg-white/5"
         >
-          <span className="flex size-11 items-center justify-center rounded-full p-0.5 transition-all group-hover:bg-black/5">
+          <span className="flex size-11 items-center justify-center rounded-full p-0.5">
             <IconSearch
               className={cn(
                 'h-5 w-5 text-black transition-transform duration-300 dark:text-white/35',

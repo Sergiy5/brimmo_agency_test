@@ -32,14 +32,14 @@ export const ForecastingHowItWorks: React.FC = () => {
   return (
     <div className="card-bg relative flex w-full flex-col items-center justify-start gap-[22px] overflow-hidden rounded-3xl px-3.5 pt-5 pb-3.5 2xl:max-w-[440px]">
       <div className="flex w-full flex-col items-center justify-start gap-2 px-1.5">
-        <h4 className="w-full text-left text-lg font-semibold">How Forecasting Works</h4>
+        <h4 className="dynamic-h4 w-full text-left font-semibold">How Forecasting Works</h4>
         <p className="text-description w-full text-left text-sm">
           The forecasting system has been streamlined to use the robust rate of sale method across
           all locations for improved consistency and reliability.
         </p>
       </div>
 
-      <ul className="flex h-full w-full flex-col items-start justify-center gap-3 lg:flex-row 2xl:flex-col">
+      <ul className="relative z-20 flex h-full w-full flex-col items-start justify-center gap-3 lg:flex-row 2xl:flex-col">
         {features.map((feature) => (
           <li key={feature.title} className="w-full flex-1">
             <ForecastingHowItWorksItem {...feature} />

@@ -12,8 +12,9 @@ interface CustomTooltipProps {
 export const ChartTooltip: React.FC<CustomTooltipProps> = ({ active, payload, label }) => {
   if (!active || !payload || !payload.length) return null;
 
-  const inventory = payload.find((p) => p.dataKey === 'sales')?.value;
+  const inventory = payload.find((p) => p.dataKey === 'inventory')?.value;
   const demand = payload.find((p) => p.dataKey === 'revenue')?.value;
+  const labelDate = payload[0]?.payload?.label;
 
   return (
     <div className="overflow-hidden rounded-lg bg-black">
@@ -23,17 +24,17 @@ export const ChartTooltip: React.FC<CustomTooltipProps> = ({ active, payload, la
       >
         {/* Tooltip header */}
         <div className="flex flex-col gap-3">
-          <p className="text-description">{`Weekly of ${label}`}</p>
+          <p className="text-description">{`Weekly of ${labelDate}`}</p>
 
           <div className="flex gap-4">
             {/* Sales */}
             <div className="flex flex-col gap-0.5">
               <div className="flex items-center gap-2">
                 {/* Dot */}
-                <div className="size-2 rounded-full bg-black dark:bg-white" />
+                <div className="size-2 rounded-full bg-black/50 dark:bg-white" />
 
                 <p className="text-[15px] font-semibold text-black dark:text-white">
-                  {inventory} units
+                  {demand} units
                 </p>
               </div>
 
@@ -44,9 +45,9 @@ export const ChartTooltip: React.FC<CustomTooltipProps> = ({ active, payload, la
             <div className="flex flex-col gap-0.5">
               <div className="flex items-center gap-2">
                 {/* Dot */}
-                <div className="bg-blue size-2 rounded-full" />
+                <div className="bg-blue/50 size-2 rounded-full" />
 
-                <p className="text-[15px] font-semibold text-black dark:text-white">{demand}</p>
+                <p className="text-[15px] font-semibold text-black dark:text-white">{inventory}</p>
               </div>
 
               <p className="text-description">Weekly Demand</p>
@@ -58,7 +59,7 @@ export const ChartTooltip: React.FC<CustomTooltipProps> = ({ active, payload, la
         <div className="h-px w-full bg-black/10" />
 
         {/* Footer */}
-        <p className="text-description">{`PO Arrival - ${label} 15 (+120)`}</p>
+        <p className="text-description">{`PO Arrival - Nov 15 (+120)`}</p>
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function Ecommerce() {
   return (
-    <div className="flex flex-col gap-4 md:gap-6">
+    <div className="flex gap-4 md:gap-6 h-full">
       <Forecasting />
     </div>
   );

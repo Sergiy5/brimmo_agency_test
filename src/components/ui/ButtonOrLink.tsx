@@ -25,11 +25,11 @@ export default function ButtonOrLink({
   ...props
 }: ButtonOrLinkProps) {
   const baseStyles =
-    'flex items-center justify-center rounded-full size-[46px] transition duration-300 bg-black/5 hover:bg-black-100/5 dark:hover:bg-black-200';
+    'flex items-center justify-center rounded-full size-[46px] transition duration-300 hover:bg-black-100/5 dark:hover:bg-black-200';
 
   const variantStyles = {
     primary:
-      'bg-black/5 hover:bg-black/10 dark:bg-black/35 dark:hover:bg-blue/20 active:bg-blue/25 active:dark:bg-blue/30',
+      'bg-black/4 hover:bg-black/10 dark:bg-black/35 dark:hover:bg-blue/20 active:bg-blue/25 active:dark:bg-blue/30',
     secondary: 'bg-blue hover:bg-blue/10',
     ghost: 'bg-transparent hover:bg-black/15 dark:hover:bg-white/15 dark:bg-white/5',
   };

@@ -5,7 +5,7 @@ import { ForecastingHowItWorks } from './forecastingHowItWorks/ForecastingHowItW
 
 export const Forecasting: React.FC = () => {
   return (
-    <div className="flex flex-col gap-4 pt-3.5 pr-4 pb-4 pl-4 md:gap-6 md:pl-0">
+    <div className="flex flex-col gap-4 pt-3.5 pr-4 pb-4 pl-4 md:gap-6 md:pl-0 h-full">
       <ForecastingHeader />
       <div className="flex flex-col gap-3 2xl:flex-row">
         <div className="flex flex-col gap-4">

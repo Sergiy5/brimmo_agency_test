@@ -1,4 +1,4 @@
-import './globals.css';
+import './styles/globals.css';
 import localFont from 'next/font/local';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { Open_Sans } from 'next/font/google';

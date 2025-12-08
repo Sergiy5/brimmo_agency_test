@@ -17,7 +17,7 @@ export const ForecastingFeatureItem: React.FC<ForecastingFeatureItemProps> = ({
       <div className="flex w-full items-center justify-between">
         <div className="flex flex-col items-start justify-start gap-1">
           <p className="text-left text-sm text-black dark:text-white/80">{shortDescription}</p>
-          <h4 className="text-left text-2xl font-semibold text-black dark:text-white/90">
+          <h4 className="dynamic-h3 text-left font-semibold text-black dark:text-white/90">
             {title}
           </h4>
         </div>
