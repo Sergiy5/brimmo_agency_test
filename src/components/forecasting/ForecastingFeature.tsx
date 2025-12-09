@@ -28,7 +28,7 @@ export const ForecastingFeature: React.FC = () => {
     <ul className="4xl:max-h-auto grid h-full w-full gap-2 lg:grid-cols-3">
       {arrayFeatures.map(({ title, icon: Icon, description, shortDescription }) => (
         <li key={title} className="flex w-full flex-1 flex-col">
-          <div className="card-bg flex h-[180px] w-full flex-col items-start justify-between rounded-[20px] px-[18px] py-4">
+          <div className="card-bg flex h-[180px] w-full flex-col items-start justify-between gap-2 rounded-[20px] px-[18px] py-4">
             <div className="flex w-full items-center justify-between">
               <div className="flex flex-col items-start justify-start gap-1">
                 <p className="dynamic-sm text-left text-black dark:text-white/80">

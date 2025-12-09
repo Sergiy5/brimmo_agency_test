@@ -42,8 +42,8 @@ export const ForecastingHowItWorks: React.FC = () => {
         {features.map(({ iconName: Icon, title, description }) => (
           <li key={title} className="flex h-full w-full flex-1 flex-col">
             <div className="flex h-full w-full overflow-hidden rounded-xl">
-              <div className="bg-card-bg dark:bg-card-bg-dark flex w-full flex-col items-start justify-between p-[18px] xl:h-full">
-                <Icon className="size-10.5" />
+              <div className="bg-card-bg dark:bg-card-bg-dark flex w-full flex-col items-start justify-between gap-3 p-[18px] xl:h-full">
+                <Icon className="size-10" />
                 <div className="flex w-full flex-col items-start justify-between gap-2">
                   <h3 className="dynamic-h4 text-left leading-5 font-semibold text-black dark:text-white">
                     {title}
