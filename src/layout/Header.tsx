@@ -1,9 +1,7 @@
 'use client';
 
-import UserMenu from '@/layout/header/headerComponents/UserMenu';
-
-import { InputSearch } from '@/components/ui/InputSearch';
-import { Logo } from '@/components/ui/Logo';
+import { UserMenu } from '@/components/common';
+import { Logo, InputSearch } from '@/components/ui';
 
 export const Header: React.FC = () => {
   return (

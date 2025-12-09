@@ -23,4 +23,5 @@
   body {
     @apply bg-bg-main relative z-1 min-h-screen font-[openSans] dark:bg-[#0A0F1A];
   }
+
 }

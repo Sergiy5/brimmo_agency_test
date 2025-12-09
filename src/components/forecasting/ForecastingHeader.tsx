@@ -19,7 +19,7 @@ export const ForecastingHeader: React.FC = () => {
           href="#"
           className="relative flex items-center justify-start gap-2 px-5 py-[11px] transition hover:opacity-90 active:opacity-80 xl:pr-0"
         >
-          <IconEye className="text-blue dark:text-blue/80 size-[18px]" />
+          <IconEye className="text-blue dark:text-blue/80 size-[18px] mb-0.5" />
 
           <span className="text-blue dark:text-blue/70 text-left font-[fixelDisplay] text-[15px]/3 font-medium">
             View Forecast Accuracy

@@ -1,7 +1,5 @@
-'use client';
-
-import { Logo } from '@/components/ui/Logo';
-import { Navigation } from '@/components/common/navigation/Navigation';
+import { Logo } from '@/components/ui';
+import { Navigation } from '@/components/common';
 
 export const Sidebar: React.FC = () => {
   return (

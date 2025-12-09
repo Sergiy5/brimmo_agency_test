@@ -17,14 +17,13 @@ export const ChartTooltip: React.FC<CustomTooltipProps> = ({ active, payload, la
   const labelDate = payload[0]?.payload?.label;
 
   return (
-    <div className="overflow-hidden rounded-lg bg-black">
       <div
-        className="relative flex flex-col items-start justify-center gap-3 bg-white py-3 pr-5 pl-3 dark:bg-white/10"
-        style={{ boxShadow: '1px 0px 4px 0 rgba(0,0,0,0.08)' }}
+        className="rounded-lg items-start flex flex-col justify-center gap-3 bg-white py-3 pr-5 pl-3 dark:bg-white/10"
+        style={{ boxShadow: '1px 0px 4px rgba(0,0,0,0.08)' }}
       >
         {/* Tooltip header */}
         <div className="flex flex-col gap-3">
-          <p className="text-description">{`Weekly of ${labelDate}`}</p>
+          <p className="text-description dynamic-text-sm">{`Week of ${labelDate}`}</p>
 
           <div className="flex gap-4">
             {/* Sales */}
@@ -38,7 +37,7 @@ export const ChartTooltip: React.FC<CustomTooltipProps> = ({ active, payload, la
                 </p>
               </div>
 
-              <p className="text-description">Inventory</p>
+              <p className="text-description dynamic-text-sm">Inventory</p>
             </div>
 
             {/* Revenue */}
@@ -50,7 +49,7 @@ export const ChartTooltip: React.FC<CustomTooltipProps> = ({ active, payload, la
                 <p className="text-[15px] font-semibold text-black dark:text-white">{inventory}</p>
               </div>
 
-              <p className="text-description">Weekly Demand</p>
+              <p className="text-description dynamic-text-sm">Weekly Demand</p>
             </div>
           </div>
         </div>
@@ -59,8 +58,7 @@ export const ChartTooltip: React.FC<CustomTooltipProps> = ({ active, payload, la
         <div className="h-px w-full bg-black/10" />
 
         {/* Footer */}
-        <p className="text-description">{`PO Arrival - Nov 15 (+120)`}</p>
+        <p className="text-description dynamic-text-sm">{`PO Arrival - Nov 15 (+120)`}</p>
       </div>
-    </div>
   );
 };

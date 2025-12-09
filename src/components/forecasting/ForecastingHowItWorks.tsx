@@ -1,4 +1,3 @@
-import { ForecastingHowItWorksItem } from './ForecastingHowItWorksItems';
 import {
   IconRobustRate,
   IconLocation,
@@ -40,12 +39,23 @@ export const ForecastingHowItWorks: React.FC = () => {
       </div>
 
       <ul className="relative z-20 flex max-h-full w-full flex-1 flex-col items-start justify-center gap-3 lg:grid lg:grid-cols-3 2xl:flex 2xl:flex-col">
-        {features.map((feature) => (
-          <li key={feature.title} className="flex h-full w-full flex-1 flex-col">
-            <ForecastingHowItWorksItem {...feature} />
+        {features.map(({ iconName: Icon, title, description }) => (
+          <li key={title} className="flex h-full w-full flex-1 flex-col">
+            <div className="flex h-full w-full overflow-hidden rounded-xl">
+              <div className="bg-card-bg dark:bg-card-bg-dark flex w-full flex-col items-start justify-between p-[18px] xl:h-full">
+                <Icon className="size-10.5" />
+                <div className="flex w-full flex-col items-start justify-between gap-2">
+                  <h3 className="dynamic-h4 text-left leading-5 font-semibold text-black dark:text-white">
+                    {title}
+                  </h3>
+                  <p className="text-description dynamic-text-xs w-full leading-3.5 text-left">{description}</p>
+                </div>
+              </div>
+            </div>
           </li>
         ))}
       </ul>
+      {/* BG Ellipses */}
       <IconEllipse className="absolute bottom-[-131px] left-[-65px] -z-10 h-auto w-[528px] dark:hidden" />
       <IconEllipse_12 className="absolute top-[210px] right-[-60px] -z-10 h-auto w-[352px] dark:hidden" />
     </div>

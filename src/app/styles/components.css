@@ -29,12 +29,14 @@
     .dynamic-h4 {
         @apply text-lg xl:text-[calc((var(--index)*18)/var(--index-ratio))];
     }
+
     /* Dynamic Text */
     .dynamic-text-sm {
         @apply text-sm/5 4xl:text-[calc((var(--index)*14)/var(--index-ratio))];
     }
+
     .dynamic-text-xs {
-        @apply text-sm/5 4xl:text-[calc((var(--index)*12)/var(--index-ratio))];
+        @apply text-xs/5 4xl:text-[calc((var(--index)*12)/var(--index-ratio))];
     }
-   
+
 }

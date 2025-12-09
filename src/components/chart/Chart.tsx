@@ -1,6 +1,5 @@
 'use client';
 
-import { cn } from '@/utils/cn';
 import {
   Line,
   XAxis,
@@ -12,36 +11,14 @@ import {
   AreaChart,
   ReferenceLine,
 } from 'recharts';
-import { ChartTooltip } from './CustomTooltip';
 import { useTheme } from '@/context/ThemeContext';
+import { ChartTooltip } from './CustomTooltip';
 import { CustomCursor } from './CustomCursor';
+import { generateMonthlySinusoid } from '@/utils/generateSinusoid';
+import { cn } from '@/utils/cn';
+import { generateWeeklyDates } from '@/utils/generateWeeklyDates';
 
-interface ISinusoidOptions {
-  amplitude: number;
-  baseline: number;
-  phase: number;
-  frequency: number;
-  pointsPerMonth: number;
-}
 
-// Generate sinusoid data
-export const generateMonthlySinusoid = (options: ISinusoidOptions) => {
-  const { amplitude = 30, baseline = 50, phase = 0, frequency = 2, pointsPerMonth = 10 } = options;
-
-  const totalPoints = 12 * pointsPerMonth;
-  const data = [];
-
-  for (let i = 0; i < totalPoints; i++) {
-    const monthPosition = (i / totalPoints) * 12;
-    const angle = frequency * monthPosition * ((2 * Math.PI) / 12) + phase;
-    const value = baseline + amplitude * Math.sin(angle);
-    data.push(Math.round(value * 100) / 100);
-  }
-
-  return data;
-};
-
-// Create chart data with 4 points per month (weekly)
 const inventoryData = generateMonthlySinusoid({
   amplitude: 25,
   baseline: 55,
@@ -60,22 +37,7 @@ const demandData = generateMonthlySinusoid({
 
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-// Generate dates for each week (approximately 7 days apart)
-const generateWeeklyDates = (startYear: number = 2024) => {
-  const dates = [];
-  const startDate = new Date(startYear, 0, 1); // January 1st
-
-  for (let i = 0; i < 48; i++) {
-    // 12 months × 4 weeks
-    const date = new Date(startDate);
-    date.setDate(startDate.getDate() + i * 7); // Add 7 days for each week
-    dates.push(date);
-  }
-
-  return dates;
-};
-
-const weeklyDates = generateWeeklyDates(2024);
+const weeklyDates = generateWeeklyDates(2025);
 
 // Combine data
 const chartData = inventoryData.map((inventory, index) => {
@@ -95,15 +57,13 @@ const chartData = inventoryData.map((inventory, index) => {
   };
 });
 
-// const data = [{ index: -1, inventory: null, revenue: null }, ...chartData];
-
 export const Chart = () => {
   const { theme } = useTheme();
 
   const isDark = theme === 'dark';
 
   return (
-    <div className="flex h-[400px] 2xl:flex-1 lg:h-[500px] 4xl:max-h-full w-full flex-col gap-6 rounded-2xl bg-white py-4 pr-3.5 dark:bg-white/8">
+    <div className="4xl:max-h-full flex h-[400px] w-full flex-col gap-6 rounded-2xl bg-white py-4 pr-3.5 lg:h-[500px] 2xl:flex-1 dark:bg-white/8">
       <div className="flex w-full flex-col items-start justify-between gap-2 pl-4 lg:flex-row lg:items-center">
         <div className="flex flex-col items-start justify-start gap-1">
           <p className="text-left text-lg font-semibold text-black dark:text-white">
@@ -170,11 +130,11 @@ export const Chart = () => {
 
           <ReferenceLine y={40} stroke="#7FCB87" strokeDasharray="3 3" />
 
-          <Tooltip cursor={<CustomCursor isDrak={isDark} />} content={<ChartTooltip />} />
+          <Tooltip wrapperStyle={{border: 'none'}} cursor={<CustomCursor isDrak={isDark} />} content={<ChartTooltip />} />
           <Area
             type="monotone"
             dataKey="inventory"
-            stroke="#0E64EE"
+            stroke="oklch(0.5464 0.2212 260.69)"
             strokeWidth={2}
             fill="none"
             dot={false}
@@ -202,7 +162,7 @@ export const Chart = () => {
           <Line
             type="monotone"
             dataKey="revenue"
-            stroke={theme === 'dark' ? '#ffffff' : '#071429'}
+            stroke={theme === 'dark' ? '#ffffff' : 'rgb(0,0,0,0.65)'}
             strokeWidth={2}
             dot={false}
             activeDot={false}

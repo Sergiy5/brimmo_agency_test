@@ -1,4 +1,4 @@
-import IconPackage from '@/assets/icons/package.svg';
+import { IconPackage } from '@/assets/icons';
 import Link from 'next/link';
 
 export const Logo: React.FC = () => {

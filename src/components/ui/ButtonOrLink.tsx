@@ -15,7 +15,7 @@ type ButtonOrLinkProps = {
 } & React.ButtonHTMLAttributes<HTMLButtonElement> &
   React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
-export default function ButtonOrLink({
+export const ButtonOrLink = ({
   children,
   className,
   href,
@@ -23,7 +23,7 @@ export default function ButtonOrLink({
   onClick,
   isActive,
   ...props
-}: ButtonOrLinkProps) {
+}: ButtonOrLinkProps) => {
   const baseStyles =
     'flex items-center justify-center rounded-full size-[46px] transition duration-300 hover:bg-black-100/5 dark:hover:bg-black-200';
 
@@ -57,4 +57,4 @@ export default function ButtonOrLink({
       {children}
     </button>
   );
-}
+};

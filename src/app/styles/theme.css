@@ -28,8 +28,7 @@
     --color-ice-blue: #e8ecf4;
     --color-gray: #cdd0d4;
     --color-card-bg: oklch(1 0 0 / 80%);
-
-
+    --color-card-bg-dark: oklch(1 0 0 / 2%);
 }
 
 

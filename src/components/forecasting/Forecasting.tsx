@@ -1,7 +1,9 @@
-import { Chart } from '../chart/Char';
-import { ForecastingFeature } from './forecastingFeature/ForecastingFeature';
-import { ForecastingHeader } from './forecastingHeader/ForecastingHeader';
-import { ForecastingHowItWorks } from './forecastingHowItWorks/ForecastingHowItWorks';
+import { Chart } from '@/components/chart';
+import {
+  ForecastingHowItWorks,
+  ForecastingFeature,
+  ForecastingHeader,
+} from '@/components/forecasting';
 
 export const Forecasting: React.FC = () => {
   return (
@@ -10,7 +12,7 @@ export const Forecasting: React.FC = () => {
       <div className="flex h-full w-full flex-col gap-2 2xl:flex-row">
         <div className="flex max-h-full w-full flex-col gap-2">
           {/* Features */}
-          <div className=" lg:max-h-[180px] 4xl:max-h-auto">
+          <div className="4xl:max-h-auto lg:max-h-[180px]">
             <ForecastingFeature />
           </div>
           {/* Chart */}

@@ -1,13 +1,12 @@
 'use client';
 
 import Image from 'next/image';
-import { ThemeToggleButton } from '@/components/ui/ThemeToggleButton';
-import IconBell from '@/assets/icons/bell.svg';
-import ButtonOrLink from '@/components/ui/ButtonOrLink';
+import { IconBell } from '@/assets/icons';
 import { useTheme } from '@/context/ThemeContext';
+import { ButtonOrLink, ThemeToggleButton } from '@/components/ui';
 
-export default function UserMenu() {
-  const { theme } = useTheme()
+export const UserMenu = () => {
+  const { theme } = useTheme();
 
   const isDark = theme === 'dark';
 
@@ -25,4 +24,4 @@ export default function UserMenu() {
       </button>
     </div>
   );
-}
+};

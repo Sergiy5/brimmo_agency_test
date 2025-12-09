@@ -1,7 +1,8 @@
+'use client';
+
 import React, { useState } from 'react';
-import { IconSearch } from '@/assets/icons';
 import { cn } from '@/utils/cn';
-import IconEraser from '@/assets/icons/eraser.svg';
+import { IconEraser, IconSearch } from '@/assets/icons';
 
 export const InputSearch = () => {
   const [isFocused, setIsFocused] = useState(false);
