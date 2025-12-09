@@ -25,11 +25,11 @@ export const ForecastingFeature: React.FC = () => {
         'Manual edits can be applied per SKU to adjust forecasts when deviations occur, ensuring more accurate and responsive inventory planning.',
     },
   ];
-
+  // flex flex-col items-center justify-between gap-2 lg:h-[220px] lg:flex-row
   return (
-    <ul className="flex h-full w-full flex-1 flex-col items-center justify-between gap-2 lg:flex-row">
+    <ul className="4xl:max-h-auto grid h-full w-full gap-2 lg:grid-cols-3">
       {arrayFeatures.map((feature) => (
-        <li key={feature.title} className="w-full">
+        <li key={feature.title} className="flex w-full flex-1 flex-col">
           <ForecastingFeatureItem {...feature} />
         </li>
       ))}

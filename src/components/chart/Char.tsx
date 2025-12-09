@@ -103,7 +103,7 @@ export const Chart = () => {
   const isDark = theme === 'dark';
 
   return (
-    <div className="flex 2xl:h-full h-[400px] w-full flex-col gap-6 rounded-2xl bg-white py-4 pr-3.5 lg:min-h-[500px] dark:bg-white/8">
+    <div className="flex h-[400px] 2xl:flex-1 lg:h-[500px] 4xl:max-h-full w-full flex-col gap-6 rounded-2xl bg-white py-4 pr-3.5 dark:bg-white/8">
       <div className="flex w-full flex-col items-start justify-between gap-2 pl-4 lg:flex-row lg:items-center">
         <div className="flex flex-col items-start justify-start gap-1">
           <p className="text-left text-lg font-semibold text-black dark:text-white">

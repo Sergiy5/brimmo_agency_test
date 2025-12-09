@@ -59,7 +59,7 @@ export const Navigation: React.FC = () => {
   ];
 
   return (
-    <div className="flex h-full flex-row-reverse items-center justify-between md:flex-col">
+    <div className="relative md:fixed flex h-full lg:h-full flex-row-reverse items-center justify-between md:flex-col">
       <ul className="flex items-start justify-between gap-0.5 rounded-full bg-gray-100 p-0.5 md:sticky md:top-60 md:flex-col md:bg-black/5 lg:top-52 xl:top-46 dark:bg-black dark:md:bg-white/5">
         {navItems.map((item, index) => {
           const isActive = index === 1;
@@ -83,6 +83,7 @@ export const Navigation: React.FC = () => {
           <IconLogout className={'size-5 dark:text-white'} />
         </ButtonOrLink>
       </div>
+      <div className="absolute -z-10 inset-0 blur-[15px] bg-white md:hidden"></div>
     </div>
   );
 };

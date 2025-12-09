@@ -10,7 +10,7 @@
     }
 
     .text-description {
-        @apply text-sm text-black/50 dark:text-white/80;
+        @apply text-black/50 dark:text-white/80;
     }
 
     .card-bg {
@@ -23,12 +23,18 @@
     }
 
     .dynamic-h3 {
-        @apply text-2xl lg:text-[calc((var(--index)*24)/var(--index-ratio))];
+        @apply text-2xl xl:text-[calc((var(--index)*24)/var(--index-ratio))];
     }
 
     .dynamic-h4 {
-        @apply text-lg lg:text-[calc((var(--index)*18)/var(--index-ratio))];
+        @apply text-lg xl:text-[calc((var(--index)*18)/var(--index-ratio))];
     }
-
-
+    /* Dynamic Text */
+    .dynamic-text-sm {
+        @apply text-sm/5 4xl:text-[calc((var(--index)*14)/var(--index-ratio))];
+    }
+    .dynamic-text-xs {
+        @apply text-sm/5 4xl:text-[calc((var(--index)*12)/var(--index-ratio))];
+    }
+   
 }

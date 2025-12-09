@@ -1,6 +1,5 @@
 import IconBell from './bell.svg';
 import IconEye from './eye.svg';
-import IconFrame from './frame.svg';
 import IconHome from './home-line.svg';
 import IconLogout from './log-out.svg';
 import IconMarkerPin from './marker-pin.svg';
@@ -14,7 +13,7 @@ import IconSearch from './search-md.svg';
 import IconEraser from './eraser.svg';
 import IconMoon from './moon.svg';
 import IconRobust from './Icon.svg';
-import IconMultilocation from './Icon-1.svg';
+import IconMultilocation from './icon-location.svg';
 import IconAvailable from './Icon-available.svg';
 import IconRobustRate from './Icon-2.svg';
 import IconLocation from './Icon-3.svg';
@@ -29,7 +28,6 @@ export {
   IconShop,
   IconBell,
   IconEye,
-  IconFrame,
   IconHome,
   IconLogout,
   IconMarkerPin,
